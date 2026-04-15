@@ -143,7 +143,7 @@ fun TransferScreen(
                     OutlinedTextField(
                         value = state.note,
                         onValueChange = { viewModel.onAction(TransferAction.EnterNote(it)) },
-                        placeholder = { Text("e.g. Rent for April") },
+                        placeholder = { Text("Describe this transaction") },
                         leadingIcon = {
                             Icon(Icons.AutoMirrored.Filled.Notes, contentDescription = null)
                         },
