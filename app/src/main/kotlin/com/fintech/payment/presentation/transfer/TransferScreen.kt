@@ -127,6 +127,9 @@ fun TransferScreen(
                         onValueChange = { viewModel.onAction(TransferAction.EnterAmount(it)) },
                         placeholder = { Text("0.00") },
                         leadingIcon = { Text("$", style = MaterialTheme.typography.titleLarge, modifier = Modifier.padding(start = 4.dp)) },
+                        leadingIcon = {
+                            Icon(Icons.Default.EuroSymbol, contentDescription = null)
+                        },
                         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
                         isError = state.amountError != null,
                         supportingText = state.amountError?.let { { Text(it) } },
