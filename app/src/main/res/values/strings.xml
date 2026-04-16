@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">PaymentApp</string>
+    <string name="app_name">Sample: Payment Transfers</string>
 
     <!-- Screen titles -->
     <string name="screen_title_accounts">Accounts</string>

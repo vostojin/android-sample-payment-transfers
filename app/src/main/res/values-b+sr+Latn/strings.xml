@@ -1,0 +1,38 @@
+<resources>
+    <!--<string name="app_name">Sample: Payment Transfers</string>-->
+    <!-- Screen titles -->
+    <string name="screen_title_accounts">Računi</string>
+    <string name="screen_title_transfer">Prenos sredstava</string>
+    <string name="screen_title_history">Istorija</string>
+    <!-- Bottom navigation labels -->
+    <string name="nav_label_accounts">Računi</string>
+    <string name="nav_label_transfer">Prenos</string>
+    <string name="nav_label_history">Istorija</string>
+    <!-- Accounts screen -->
+    <string name="accounts_section_all">Svi računi</string>
+    <string name="accounts_empty">Nema pronađenih računa</string>
+    <string name="accounts_portfolio_label">Ukupan portfolio</string>
+    <string name="accounts_active_account_one">%d aktivan račun</string>
+    <string name="accounts_active_accounts_other">%d aktivnih računa</string>
+    <!-- History screen -->
+    <string name="history_empty_title">Još nema prenosa</string>
+    <string name="history_empty_subtitle">Istorija vaših prenosa će se prikazati ovde</string>
+    <string name="history_section_recent">Nedavni prenosi</string>
+    <string name="history_total_transactions">Ukupno transakcija:</string>
+    <!-- Transfer screen -->
+    <string name="transfer_section_from">Sa računa</string>
+    <string name="transfer_section_to">Na račun</string>
+    <string name="transfer_section_amount">Iznos</string>
+    <string name="transfer_section_note">Napomena (opciono)</string>
+    <string name="transfer_label_source_account">Izvorni račun</string>
+    <string name="transfer_label_destination_account">Odredišni račun</string>
+    <string name="transfer_placeholder_amount">0,00</string>
+    <string name="transfer_placeholder_note">Opišite ovu transakciju</string>
+    <string name="transfer_button_transfer">Prenesi</string>
+    <string name="transfer_button_clear">Obriši</string>
+    <string name="transfer_no_accounts_available">Nema dostupnih računa</string>
+    <string name="transfer_success_message">Prenos od %s je završen</string>
+    <!-- Components -->
+    <string name="account_badge_inactive">NEAKTIVAN</string>
+    <!--<string name="transaction_arrow">→</string>-->
+</resources>
