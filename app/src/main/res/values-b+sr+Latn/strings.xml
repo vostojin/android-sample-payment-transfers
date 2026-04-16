@@ -12,8 +12,11 @@
     <string name="accounts_section_all">Svi računi</string>
     <string name="accounts_empty">Nema pronađenih računa</string>
     <string name="accounts_portfolio_label">Ukupan portfolio</string>
-    <string name="accounts_active_account_one">%d aktivan račun</string>
-    <string name="accounts_active_accounts_other">%d aktivnih računa</string>
+    <plurals name="accounts_active_accounts">
+        <item quantity="one">%d aktivan račun</item>
+        <item quantity="few">%d aktivna računa</item>
+        <item quantity="other">%d aktivnih računa</item>
+    </plurals>
     <!-- History screen -->
     <string name="history_empty_title">Još nema prenosa</string>
     <string name="history_empty_subtitle">Istorija vaših prenosa će se prikazati ovde</string>
