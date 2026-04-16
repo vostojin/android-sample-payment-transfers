@@ -10,6 +10,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountBalance
 import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material.icons.filled.Error
+import androidx.compose.material.icons.filled.SubdirectoryArrowRight
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -65,7 +66,7 @@ fun AccountCard(
             .clip(shape)
             .then(if (onClick != null) Modifier.clickable { onClick() } else Modifier)
             .border(
-                width = if (isSelected) 2.dp else  1.dp,
+                width = if (isSelected) 2.dp else 1.dp,
                 color = if (showBackground) borderColor else Color.Transparent,
                 shape = shape
             ),
@@ -227,25 +228,20 @@ fun TransactionItem(
             Column(modifier = Modifier.weight(1f)) {
                 val srcName = accountNamesById[transfer.sourceAccountId] ?: transfer.sourceAccountId
                 val dstName = accountNamesById[transfer.destinationAccountId] ?: transfer.destinationAccountId
-                Row(verticalAlignment = Alignment.Top) {
-                    Text(
-                        text = srcName,
-                        style = MaterialTheme.typography.bodyMedium,
-                        fontWeight = FontWeight.Medium,
-                        maxLines = 2,
-                        overflow = TextOverflow.MiddleEllipsis
-                    )
-                    Text(
-                        text = stringResource(R.string.transaction_arrow),
-                        modifier = Modifier.padding(horizontal = 4.dp),
-                        style = MaterialTheme.typography.bodyLarge,
-                        fontWeight = FontWeight.ExtraBold
-                    )
+                Text(
+                    text = srcName,
+                    style = MaterialTheme.typography.bodyMedium,
+                    fontWeight = FontWeight.Medium,
+                    maxLines = 1,
+                    overflow = TextOverflow.MiddleEllipsis
+                )
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Icon(imageVector = Icons.Default.SubdirectoryArrowRight, modifier = Modifier.size(16.dp), contentDescription = null)
                     Text(
                         text = dstName,
                         style = MaterialTheme.typography.bodyMedium,
                         fontWeight = FontWeight.Medium,
-                        maxLines = 2,
+                        maxLines = 1,
                         overflow = TextOverflow.MiddleEllipsis
                     )
                 }

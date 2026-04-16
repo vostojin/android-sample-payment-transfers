@@ -17,9 +17,13 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.fintech.payment.R
+import com.fintech.payment.domain.model.Transfer
+import com.fintech.payment.domain.model.TransferStatus
 import com.fintech.payment.presentation.accounts.AccountsViewModel
 import com.fintech.payment.presentation.common.SectionHeader
 import com.fintech.payment.presentation.common.TransactionItem
+import java.math.BigDecimal
+import java.time.Instant
 
 @Composable
 fun HistoryScreen(
@@ -135,3 +139,11 @@ private fun SummaryBanner(count: Int) {
 @Preview
 @Composable
 private fun SummaryBannerPreview() = SummaryBanner(12)
+
+@Preview
+@Composable
+private fun TransactionItemPreview() {
+    val transaction = Transfer("1", "ACC-001", "ACC-002", BigDecimal(1000), "RSD", TransferStatus.SUCCESS,
+        Instant.now(), "Lorem ipsum")
+    TransactionItem(transaction)
+}
