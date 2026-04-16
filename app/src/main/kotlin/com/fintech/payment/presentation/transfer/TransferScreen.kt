@@ -305,5 +305,5 @@ private fun AccountPickerFieldPreview() {
         Account("B-002", "ownerName B", "description B", BigDecimal("78"), "RSD"),
         Account("C-003", "ownerName C", "description C", BigDecimal("91011"), "EUR"),
     )
-    AccountPickerField("Label", accounts, "A-001", null, {})
+    AccountPickerField("Label", accounts, "A-001", null) {}
 }
