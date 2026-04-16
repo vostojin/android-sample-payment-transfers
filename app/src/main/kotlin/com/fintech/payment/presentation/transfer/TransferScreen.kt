@@ -2,6 +2,7 @@
 
 package com.fintech.payment.presentation.transfer
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -31,6 +32,7 @@ import com.fintech.payment.presentation.common.formatCurrency
 import kotlinx.coroutines.flow.collectLatest
 import java.math.BigDecimal
 
+@SuppressLint("LocalContextGetResourceValueCall")
 @Composable
 fun TransferScreen(
     onTransferSuccess: (transactionId: String) -> Unit = {},
