@@ -15,7 +15,7 @@ android {
         applicationId = "com.fintech.payment"
         minSdk = 26
         //noinspection EditedTargetSdkVersion
-        targetSdk = 37
+        //targetSdk = 37
         versionCode = 1
         versionName = "1.0.0"
 
