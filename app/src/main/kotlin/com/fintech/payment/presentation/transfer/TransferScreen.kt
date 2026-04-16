@@ -125,8 +125,7 @@ fun TransferScreen(
                     OutlinedTextField(
                         value = state.amount,
                         onValueChange = { viewModel.onAction(TransferAction.EnterAmount(it)) },
-                        placeholder = { Text("0.00") },
-                        leadingIcon = { Text("$", style = MaterialTheme.typography.titleLarge, modifier = Modifier.padding(start = 4.dp)) },
+                        placeholder = { Text(stringResource(R.string.transfer_placeholder_amount)) },
                         leadingIcon = {
                             Icon(Icons.Default.EuroSymbol, contentDescription = null)
                         },
