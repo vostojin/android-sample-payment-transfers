@@ -15,8 +15,10 @@
     <string name="accounts_section_all">All accounts</string>
     <string name="accounts_empty">No accounts found</string>
     <string name="accounts_portfolio_label">Total Portfolio</string>
-    <string name="accounts_active_account_one">%d active account</string>
-    <string name="accounts_active_accounts_other">%d active accounts</string>
+    <plurals name="accounts_active_accounts">
+        <item quantity="one">%d active account</item>
+        <item quantity="other">%d active accounts</item>
+    </plurals>
 
     <!-- History screen -->
     <string name="history_empty_title">No transfers yet</string>

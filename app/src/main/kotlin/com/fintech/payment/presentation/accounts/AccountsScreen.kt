@@ -10,6 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -19,11 +20,9 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.fintech.payment.R
 import com.fintech.payment.domain.model.Account
 import com.fintech.payment.presentation.common.AccountCard
-import com.fintech.payment.presentation.common.Screen
 import com.fintech.payment.presentation.common.SectionHeader
 import com.fintech.payment.presentation.common.formatCurrency
 import java.math.BigDecimal
-import java.math.BigInteger
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -154,7 +153,7 @@ private fun PortfolioSummaryCard(currency: String, accounts: List<Account>, tota
                     )
                 }
                 Text(
-                    text = if (accountCount != 1) stringResource(R.string.accounts_active_accounts_other, accountCount) else stringResource(R.string.accounts_active_account_one, accountCount),
+                    text = pluralStringResource(R.plurals.accounts_active_accounts, accountCount, accountCount),
                     style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.7f)
                 )
