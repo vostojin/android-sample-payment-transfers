@@ -10,11 +10,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.fintech.payment.R
 import com.fintech.payment.domain.model.Account
 import com.fintech.payment.presentation.common.AccountCard
 import com.fintech.payment.presentation.common.Screen
@@ -35,7 +37,7 @@ fun AccountsScreen(
             TopAppBar(
                 title = {
                     Text(
-                        "Accounts",
+                        stringResource(R.string.screen_title_accounts),
                         style = MaterialTheme.typography.headlineMedium,
                         fontWeight = FontWeight.Bold
                     )
@@ -85,7 +87,7 @@ fun AccountsScreen(
                     totalBalance = totalBalanceEUR
                 )
                 Spacer(Modifier.height(8.dp))
-                SectionHeader("All accounts")
+                SectionHeader(stringResource(R.string.accounts_section_all))
             }
 
             if (state.accounts.isEmpty()) {
@@ -97,7 +99,7 @@ fun AccountsScreen(
                         contentAlignment = Alignment.Center
                     ) {
                         Text(
-                            "No accounts found",
+                            stringResource(R.string.accounts_empty),
                             style = MaterialTheme.typography.bodyLarge,
                             color = MaterialTheme.colorScheme.onSurfaceVariant
                         )
@@ -132,7 +134,7 @@ private fun PortfolioSummaryCard(currency: String, accounts: List<Account>, tota
         ) {
             Column(modifier = Modifier.weight(1f)) {
                 Text(
-                    text = "Total Portfolio",
+                    text = stringResource(R.string.accounts_portfolio_label),
                     style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.7f)
                 )
@@ -152,7 +154,7 @@ private fun PortfolioSummaryCard(currency: String, accounts: List<Account>, tota
                     )
                 }
                 Text(
-                    text = "$accountCount active account${if (accountCount != 1) "s" else ""}",
+                    text = if (accountCount != 1) stringResource(R.string.accounts_active_accounts_other, accountCount) else stringResource(R.string.accounts_active_account_one, accountCount),
                     style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.7f)
                 )

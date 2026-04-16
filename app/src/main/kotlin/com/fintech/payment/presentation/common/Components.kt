@@ -17,12 +17,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.fintech.payment.R
 import com.fintech.payment.domain.model.Account
 import com.fintech.payment.domain.model.Transfer
 import com.fintech.payment.domain.model.TransferStatus
@@ -126,7 +128,7 @@ fun AccountCard(
                     if (!account.isActive) {
                         Spacer(Modifier.width(8.dp))
                         Badge(containerColor = MaterialTheme.colorScheme.error) {
-                            Text("INACTIVE", fontSize = 9.sp, fontWeight = FontWeight.Bold)
+                            Text(stringResource(R.string.account_badge_inactive), fontSize = 9.sp, fontWeight = FontWeight.Bold)
                         }
                     }
 
@@ -234,7 +236,7 @@ fun TransactionItem(
                         overflow = TextOverflow.MiddleEllipsis
                     )
                     Text(
-                        text = "→",
+                        text = stringResource(R.string.transaction_arrow),
                         modifier = Modifier.padding(horizontal = 4.dp),
                         style = MaterialTheme.typography.bodyLarge,
                         fontWeight = FontWeight.ExtraBold

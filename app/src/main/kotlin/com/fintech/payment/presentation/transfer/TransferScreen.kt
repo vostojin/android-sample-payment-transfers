@@ -5,9 +5,7 @@ package com.fintech.payment.presentation.transfer
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.Notes
 import androidx.compose.material.icons.automirrored.filled.Send
@@ -16,12 +14,15 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.fintech.payment.R
 import com.fintech.payment.domain.model.Account
 import com.fintech.payment.presentation.common.AccountCard
 import com.fintech.payment.presentation.common.LoadingOverlay
@@ -37,6 +38,7 @@ fun TransferScreen(
 ) {
     val state by viewModel.uiState.collectAsStateWithLifecycle()
     val snackbarHostState = remember { SnackbarHostState() }
+    val context = LocalContext.current
 
     // Collect one-shot events
     LaunchedEffect(Unit) {
@@ -44,7 +46,7 @@ fun TransferScreen(
             when (event) {
                 is TransferEvent.Success -> {
                     snackbarHostState.showSnackbar(
-                        message = "✓ Transfer of ${event.transfer.amount.formatCurrency(event.transfer.currency)} completed",
+                        message = context.getString(R.string.transfer_success_message, event.transfer.amount.formatCurrency(event.transfer.currency)),
                         duration = SnackbarDuration.Short
                     )
                     onTransferSuccess(event.transfer.id)
@@ -64,7 +66,7 @@ fun TransferScreen(
             TopAppBar(
                 title = {
                     Text(
-                        "Transfer Funds",
+                        stringResource(R.string.screen_title_transfer),
                         style = MaterialTheme.typography.headlineMedium,
                         fontWeight = FontWeight.Bold
                     )
@@ -94,10 +96,10 @@ fun TransferScreen(
 
                 // ── Source account
                 item {
-                    SectionHeader("From account")
+                    SectionHeader(stringResource(R.string.transfer_section_from))
                     Spacer(Modifier.height(6.dp))
                     AccountPickerField(
-                        label = "Source account",
+                        label = stringResource(R.string.transfer_label_source_account),
                         accounts = state.accounts,
                         selectedId = state.sourceAccountId,
                         errorMessage = state.sourceError,
@@ -107,10 +109,10 @@ fun TransferScreen(
 
                 // ── Destination account
                 item {
-                    SectionHeader("To account")
+                    SectionHeader(stringResource(R.string.transfer_section_to))
                     Spacer(Modifier.height(6.dp))
                     AccountPickerField(
-                        label = "Destination account",
+                        label = stringResource(R.string.transfer_label_destination_account),
                         accounts = state.accounts.filter { it.id != state.sourceAccountId },
                         selectedId = state.destinationAccountId,
                         errorMessage = state.destinationError,
@@ -120,7 +122,7 @@ fun TransferScreen(
 
                 // ── Amount
                 item {
-                    SectionHeader("Amount")
+                    SectionHeader(stringResource(R.string.transfer_section_amount))
                     Spacer(Modifier.height(6.dp))
                     OutlinedTextField(
                         value = state.amount,
@@ -140,12 +142,12 @@ fun TransferScreen(
 
                 // ── Note (optional)
                 item {
-                    SectionHeader("Note (optional)")
+                    SectionHeader(stringResource(R.string.transfer_section_note))
                     Spacer(Modifier.height(6.dp))
                     OutlinedTextField(
                         value = state.note,
                         onValueChange = { viewModel.onAction(TransferAction.EnterNote(it)) },
-                        placeholder = { Text("Describe this transaction") },
+                        placeholder = { Text(stringResource(R.string.transfer_placeholder_note)) },
                         leadingIcon = {
                             Icon(Icons.AutoMirrored.Filled.Notes, contentDescription = null)
                         },
@@ -169,7 +171,7 @@ fun TransferScreen(
                         Icon(Icons.AutoMirrored.Filled.Send, contentDescription = null)
                         Spacer(Modifier.width(8.dp))
                         Text(
-                            "Transfer",
+                            stringResource(R.string.transfer_button_transfer),
                             style = MaterialTheme.typography.labelLarge
                         )
                     }
@@ -185,7 +187,7 @@ fun TransferScreen(
                     ) {
                         Icon(Icons.Default.Refresh, contentDescription = null)
                         Spacer(Modifier.width(8.dp))
-                        Text("Clear", style = MaterialTheme.typography.labelLarge)
+                        Text(stringResource(R.string.transfer_button_clear), style = MaterialTheme.typography.labelLarge)
                     }
                 }
 
@@ -239,7 +241,7 @@ private fun AccountPickerField(
         ) {
             if (accounts.isEmpty()) {
                 DropdownMenuItem(
-                    text = { Text("No accounts available") },
+                    text = { Text(stringResource(R.string.transfer_no_accounts_available)) },
                     onClick = { expanded = false }
                 )
             } else {

@@ -10,11 +10,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.fintech.payment.R
 import com.fintech.payment.presentation.accounts.AccountsViewModel
 import com.fintech.payment.presentation.common.SectionHeader
 import com.fintech.payment.presentation.common.TransactionItem
@@ -35,7 +37,7 @@ fun HistoryScreen(
             TopAppBar(
                 title = {
                     Text(
-                        "History",
+                        stringResource(R.string.screen_title_history),
                         style = MaterialTheme.typography.headlineMedium,
                         fontWeight = FontWeight.Bold
                     )
@@ -64,10 +66,10 @@ fun HistoryScreen(
                 contentAlignment = Alignment.Center
             ) {
                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                    Text("No transfers yet", style = MaterialTheme.typography.titleLarge)
+                    Text(stringResource(R.string.history_empty_title), style = MaterialTheme.typography.titleLarge)
                     Spacer(Modifier.height(8.dp))
                     Text(
-                        "Your transfer history will appear here",
+                        stringResource(R.string.history_empty_subtitle),
                         style = MaterialTheme.typography.bodyMedium,
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
@@ -86,7 +88,7 @@ fun HistoryScreen(
             item {
                 SummaryBanner(count = state.transfers.size)
                 Spacer(Modifier.height(4.dp))
-                SectionHeader("Recent transfers")
+                SectionHeader(stringResource(R.string.history_section_recent))
             }
 
             items(
@@ -117,7 +119,7 @@ private fun SummaryBanner(count: Int) {
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             Text(
-                "Total Transactions:",
+                stringResource(R.string.history_total_transactions),
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )

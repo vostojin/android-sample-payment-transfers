@@ -1,5 +1,6 @@
 package com.fintech.payment.presentation.common
 
+import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.Send
@@ -13,6 +14,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
@@ -20,19 +22,20 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.fintech.payment.R
 import com.fintech.payment.presentation.accounts.AccountsScreen
 import com.fintech.payment.presentation.history.HistoryScreen
 import com.fintech.payment.presentation.transfer.TransferScreen
 
 sealed class Screen(
     val route: String,
-    val label: String,
+    @StringRes val label: Int,
     val selectedIcon: ImageVector,
     val unselectedIcon: ImageVector
 ) {
-    object Accounts : Screen("accounts", "Accounts", Icons.Filled.AccountBalance, Icons.Outlined.AccountBalance)
-    object Transfer : Screen("transfer", "Transfer", Icons.AutoMirrored.Filled.Send, Icons.AutoMirrored.Outlined.Send)
-    object History  : Screen("history",  "History",  Icons.Filled.History,       Icons.Outlined.History)
+    object Accounts : Screen("accounts", R.string.nav_label_accounts, Icons.Filled.AccountBalance, Icons.Outlined.AccountBalance)
+    object Transfer : Screen("transfer", R.string.nav_label_transfer, Icons.AutoMirrored.Filled.Send, Icons.AutoMirrored.Outlined.Send)
+    object History  : Screen("history",  R.string.nav_label_history,  Icons.Filled.History,       Icons.Outlined.History)
 }
 
 private val bottomNavItems = listOf(Screen.Accounts, Screen.Transfer, Screen.History)
@@ -57,10 +60,10 @@ fun AppNavigation() {
                         icon = {
                             Icon(
                                 if (isSelected) screen.selectedIcon else screen.unselectedIcon,
-                                contentDescription = screen.label
+                                contentDescription = stringResource(screen.label)
                             )
                         },
-                        label = { Text(screen.label) },
+                        label = { Text(stringResource(screen.label)) },
                         selected = isSelected,
                         onClick = {
                             navController.navigate(screen.route) {
