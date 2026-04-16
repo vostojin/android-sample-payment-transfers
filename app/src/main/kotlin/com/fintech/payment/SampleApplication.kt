@@ -7,7 +7,7 @@ import dagger.hilt.android.HiltAndroidApp
 import java.util.Locale
 
 @HiltAndroidApp
-class PaymentApplication : Application() {
+class SampleApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         applyLocale()

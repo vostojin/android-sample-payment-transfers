@@ -1,4 +1,4 @@
 <resources>
     <!-- Base application theme — actual colors are handled by Compose MaterialTheme -->
-    <style name="Theme.PaymentApp" parent="android:Theme.Material.Light.NoActionBar" />
+    <style name="Theme.SampleApp" parent="android:Theme.Material.Light.NoActionBar" />
 </resources>
