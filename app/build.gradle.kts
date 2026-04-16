@@ -9,12 +9,13 @@ plugins {
 
 android {
     namespace = "com.fintech.payment"
-    compileSdk = 36
+    compileSdk = 37
 
     defaultConfig {
         applicationId = "com.fintech.payment"
         minSdk = 26
-        targetSdk = 35
+        //noinspection EditedTargetSdkVersion
+        targetSdk = 37
         versionCode = 1
         versionName = "1.0.0"
 
