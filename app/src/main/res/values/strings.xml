@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Sample: Payment Transfers</string>
+    <string name="app_name" translatable="false">Sample: Payment Transfers</string>
 
     <!-- Screen titles -->
     <string name="screen_title_accounts">Accounts</string>
@@ -40,5 +40,5 @@
 
     <!-- Components -->
     <string name="account_badge_inactive">INACTIVE</string>
-    <string name="transaction_arrow">→</string>
+    <string name="transaction_arrow" translatable="false">→</string>
 </resources>
