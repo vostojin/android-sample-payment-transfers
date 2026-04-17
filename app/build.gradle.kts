@@ -15,7 +15,7 @@ android {
         applicationId = "com.sample.paymenttransfer"
         minSdk = 26
         //noinspection EditedTargetSdkVersion
-        //targetSdk = 36
+        targetSdk = 36
         versionCode = 1
         versionName = "1.0.0"
 
@@ -29,6 +29,11 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            signingConfig = signingConfigs.getByName("debug")
+
+            //baselineProfiles {
+            //    defaultProfileFrom(project(":macrobenchmark"))
+            //}
         }
         debug {
             isDebuggable = true
@@ -44,6 +49,7 @@ android {
     kotlin {
         compilerOptions {
             jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17)
+            freeCompilerArgs.add("-Xannotation-default-target=param-property")
         }
     }
 
@@ -95,6 +101,7 @@ dependencies {
 
     // Coroutines
     implementation(libs.kotlinx.coroutines.android)
+    implementation(libs.profileinstaller)
 
     // Testing
     testImplementation(libs.junit)
