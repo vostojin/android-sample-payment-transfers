@@ -1,4 +1,4 @@
-# Sample Payment Transfers //to self ;)
+# Sample: Payment Transfers //to self ;)
 
 A production-quality **Payment Transfer Service** for a digital banking platform, built with modern Android architecture.
 
