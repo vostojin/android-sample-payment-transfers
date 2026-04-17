@@ -1,7 +1,7 @@
 # Add project specific ProGuard rules here.
 
 # Keep domain models
--keep class com.fintech.payment.domain.model.** { *; }
+-keep class com.sample.paymenttransfer.domain.model.** { *; }
 
 # Room
 -keep class * extends androidx.room.RoomDatabase

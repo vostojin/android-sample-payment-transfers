@@ -1,18 +1,18 @@
 plugins {
     alias(libs.plugins.android.application)
+    alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.hilt)
     alias(libs.plugins.room)
     alias(libs.plugins.ksp)
-    alias(libs.plugins.kotlin.android)
 }
 
 android {
-    namespace = "com.fintech.payment"
+    namespace = "com.sample.paymenttransfer"
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.fintech.payment"
+        applicationId = "com.sample.paymenttransfer"
         minSdk = 26
         //noinspection EditedTargetSdkVersion
         //targetSdk = 36
